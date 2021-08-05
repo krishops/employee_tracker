@@ -7,6 +7,8 @@ describe Employee do
 
   it { should validate_presence_of :role }
 
+  it { should have_and_belong_to_many :projects }
+
   it("titleizes the name of an employee") do
     division = Division.create({name: "Human Resources"})
     employee = Employee.create({name: "kristen hopper", role: "team lead", division_id: division.id})
