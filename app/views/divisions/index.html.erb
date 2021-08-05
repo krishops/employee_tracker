@@ -1,5 +1,5 @@
 <h1>Divisions</h1>
-
+<div class="col-md-3">
 <% if @divisions.any? %>
   <ul>
     <% @divisions.each do |division| %>
@@ -9,15 +9,28 @@
 <% else %>
   <p>There are no divisions yet.</p>
 <% end %>
+</div>
+
+<div class="col-md-3">
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><%= link_to project.title, project_path(project) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no projects yet.</p>
+<% end %>
+</div>
+<div class="col-md-3">
 
 Today's new employees!
 <ul>
-<% @employees.today.each do |employee| %>
-<li><% employee.name %> </li>
+<% @employees.each do |employee| %>
+<li><%= link_to employee.name, division_employee_path(Division.find(employee.division_id), employee)%> </li>
 <% end %>
 <ul>
-
-<h3>Managers: <%=@employees.manager.name%></h3>
+</div>
 
 
 <p><%= link_to "Create new division", new_division_path %></p>

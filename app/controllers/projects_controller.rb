@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     if @project.save
       flash[:notice] = "Project successfully added!"
-      redirect_to projects_path
+      redirect_to divisions_path
     else
       render :new
     end
@@ -42,6 +42,6 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:title)
     end
 end
